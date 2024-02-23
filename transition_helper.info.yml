@@ -1,0 +1,9 @@
+name: Transition Helper
+type: module
+description: Helper for working with workflows.
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:content_moderation
+  - drupal:workflows
+  - drupal:workflow_buttons

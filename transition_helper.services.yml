@@ -1,0 +1,4 @@
+services:
+  transition_helper.helper:
+    class: Drupal\transition_helper\TransitionHelper
+    arguments: ['@content_moderation.moderation_information']

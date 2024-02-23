@@ -1,0 +1,7 @@
+dialog.open_modal_form:
+ path: '/dialog/rejects/config/modal_form/{nid}'
+ defaults:
+   _title: 'Please provide a reason for the rejection.'
+   _controller: '\Drupal\dialog\Controller\ModalFormMymoduleController::openModalForm'
+ requirements:
+   _role: 'staff+administrator'

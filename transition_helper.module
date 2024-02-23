@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for the Transition helper module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function transition_helper_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Workflow buttons widget doesn't exist
+  if (!isset($form["moderation_state"]["widget"][0]["#options"])) {
+    return;
+  }
+  $moderation_state = $form["moderation_state"]["widget"][0]["#default_value"];
+  // Remove save as is buttons on pseudofield.
+  if ($form_state->get('workflow_buttons')) {
+    // if a transition to the current state exists, remove it.
+    if (isset($form["moderation_state"]["widget"][0]["#options"][$moderation_state])) {
+      unset($form["moderation_state"]["widget"][0]["#options"][$moderation_state]);
+      return;
+    }
+  }
+  // The code below will require modification to work on your content types.
+  if (!in_array($form_id, ['myentity_edit_form', 'myentity_add_form'])) {
+   return;
+ }
+  $current_user = Drupal::currentUser();
+  if (in_array('agency', $current_user->getRoles()) && $moderation_state == 'claimed_pending') {
+   $form["moderation_state"]["widget"][0]["#options"]['available'] = 'Release Listing';
+ }
+}
