@@ -1,6 +1,6 @@
 # Transition Helper Module
 
-This module was created to share code snippets for use in a presentation about
+This module was created to share code snippets for use in [a presentation](https://www.fldrupal.camp/session/elevate-your-approval-processes-mastering-complex-workflows) about
 building approval systems on top of Workflows in Drupal.  This code will definitely
 not completely work without modification.
 
